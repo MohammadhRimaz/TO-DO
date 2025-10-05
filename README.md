@@ -94,14 +94,14 @@ PORT=5000
 
 ## 🧩 Instructions to Build & Run
 
-### Step 1 — Clone the Repository
+### Step 1 - Clone the Repository
 
 ```bash
 git clone https://github.com/MohammadhRimaz/TO-DO.git
 cd todo-app
 ```
 
-### Step 2 — Setup Database
+### Step 2 - Setup Database
 
 - Make sure PostgreSQL is installed and running locally.
 
@@ -111,7 +111,7 @@ CREATE DATABASE todo_db;
 
 Update .env with your PostgreSQL credentials.
 
-### Step 3 — Install Dependencies
+### Step 3 - Install Dependencies
 
 - Root Level
 
@@ -128,7 +128,7 @@ cd frontend
 npm install
 ```
 
-### Step 4 — Run the Application
+### Step 4 - Run the Application
 
 - Run Backend in the root level
 
@@ -136,7 +136,7 @@ npm install
 npm run dev
 ```
 
-- Backend runs at:
+Backend runs at:
   👉 http://localhost:5000
 
 - Run Frontend
@@ -149,7 +149,7 @@ npm run dev
 Frontend runs at:
 👉 http://localhost:5173
 
-### Step 5 — See the Database visually
+### Step 5 - See the Database visually
 
 - Run the command in the root folder
 
