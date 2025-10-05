@@ -94,14 +94,14 @@ PORT=5000
 
 ## 🧩 Instructions to Build & Run
 
-1. Step 1 — Clone the Repository
+### Step 1 — Clone the Repository
 
 ```bash
 git clone https://github.com/MohammadhRimaz/TO-DO.git
 cd todo-app
 ```
 
-2. Step 2 — Setup Database
+### Step 2 — Setup Database
 
 - Make sure PostgreSQL is installed and running locally.
 
@@ -109,9 +109,9 @@ cd todo-app
 CREATE DATABASE todo_db;
 ```
 
-- Update .env with your PostgreSQL credentials.
+Update .env with your PostgreSQL credentials.
 
-3. Step 3 — Install Dependencies
+### Step 3 — Install Dependencies
 
 - Root Level
 
@@ -128,7 +128,7 @@ cd frontend
 npm install
 ```
 
-4. Step 4 — Run the Application
+### Step 4 — Run the Application
 
 - Run Backend in the root level
 
@@ -146,10 +146,10 @@ cd frontend
 npm run dev
 ```
 
-- Frontend runs at:
-  👉 http://localhost:5173
+Frontend runs at:
+👉 http://localhost:5173
 
-5. Step 5 — See the Database visually
+### Step 5 — See the Database visually
 
 - Run the command in the root folder
 
@@ -157,4 +157,4 @@ npm run dev
 npx prisma studio
 ```
 
-- Prisma Studio is run on http://localhost:5555
+Prisma Studio is run on http://localhost:5555
