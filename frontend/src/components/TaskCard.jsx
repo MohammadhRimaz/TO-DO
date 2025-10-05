@@ -1,7 +1,7 @@
 export default function TaskCard({ task, onDone, onDelete }) {
   return (
     <div className="task-card">
-      <div>
+      <div className="task-info">
         <h3>{task.title}</h3>
         <p>{task.description || "No description"}</p>
       </div>

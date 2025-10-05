@@ -63,19 +63,20 @@ export default function App() {
       <h1>TO-DO List</h1>
 
       <form onSubmit={addTask} className="task-form">
+        <h3>Add a Task</h3>
         <input
           type="text"
           placeholder="Text title..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <input
+        <textarea
           type="text"
           placeholder="Description (optional)..."
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button type="submit">Add Task</button>
+        <button type="submit">Add</button>
       </form>
 
       <div className="task-list">

@@ -1,42 +1,193 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* App Container */
+.app-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  max-width: 1100px;
+  position: relative;
+  margin-top: 60px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-container h1 {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  margin-bottom: 20px;
+  transform: translateX(-50%);
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  z-index: 1000;
+  background-color: transparent;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Left: Task Form */
+.task-form {
+  flex: 1;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Heading inside form */
+.task-form h3 {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+/* Inputs */
+.task-form input {
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+/* Description Textarea */
+.task-form textarea {
+  height: 100px;
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  margin-bottom: 12px;
+  text-align: left;
+  color: #000;
+  line-height: 1.4;
+}
+
+/* Add Button */
+.task-form button {
+  align-self: flex-end;
+  padding: 8px 30px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 10px;
+  trasition: background-color 0.2s ease;
+}
+
+.task-form button:hover {
+  background-color: #005fcc;
+}
+
+/* Right: Task List */
+.task-list {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Task Card */
+.task-card {
+  background-color: #e0e0e0;
+  color: #000;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex-wrap: nowrap;
+  min-height: 80px;
+  height: auto;
+}
+
+/* Task text content */
+.task-info {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word; /* ensures long text wraps */
+  white-space: pre-wrap;
+}
+
+/* Task Card Info */
+.task-card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.task-card p {
+  font-size: 14px;
+  color: #333;
+  margin-top: 4px;
+}
+
+/* Buttons beside text */
+.task-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
+  margin-left: 20px;
+  flex-shrink: 0; /* prevents collapse */
+}
+
+.task-buttons button {
+  border: none;
+  border-radius: 6px;
+  width: 80px;
+  padding: 6px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  transition: opacity 0.2s;
+}
+
+.task-card button:first-child {
+  background-color: #28a745; /* Done - Green */
+}
+
+.task-card button:last-child {
+  background-color: #dc3545; /* Delete - Red */
+}
+
+.task-card button:hover {
+  opacity: 0.85;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .task-form,
+  .task-list {
+    width: 100%;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  /* Keep buttons vertical in mobile view */
+  .task-buttons {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
   }
-}
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  .app-container h1 {
+    font-size: 26px;
+    margin-top: 25px;
+  }
 }
