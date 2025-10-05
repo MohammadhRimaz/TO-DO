@@ -105,7 +105,7 @@ cd todo-app
 
 - Make sure PostgreSQL is installed and running locally.
 
-```bash
+```sql
 CREATE DATABASE todo_db;
 ```
 
@@ -137,7 +137,7 @@ npm run dev
 ```
 
 Backend runs at:
-  👉 http://localhost:5000
+👉 http://localhost:5000
 
 - Run Frontend
 
