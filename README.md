@@ -24,13 +24,13 @@ This project allows users to create, view, complete, and delete tasks efficientl
 
 ## 🛠️ Tech Stack
 
-| Layer            | Technology                     |
-| ---------------- | ------------------------------ |
-| Frontend         | React (Vite) + Axios + CSS     |
-| Backend          | Node.js + Express.js           |
-| Database         | PostgreSQL                     |
-| ORM              | Prisma                         |
-| Containerization | Docker (optional future setup) |
+| Layer            | Technology                 |
+| ---------------- | -------------------------- |
+| Frontend         | React (Vite) + Axios + CSS |
+| Backend          | Node.js + Express.js       |
+| Database         | PostgreSQL                 |
+| ORM              | Prisma                     |
+| Containerization | Docker                     |
 
 ---
 
@@ -40,30 +40,33 @@ This project allows users to create, view, complete, and delete tasks efficientl
 root/
 │
 ├── backend/
-│ ├── index.js
-│ ├── controllers/
-│ │ └── taskController.js
-│ ├── routes/
-│   └── taskRoutes.js
+│   ├── index.js
+│   ├── controllers/
+│   │   └── taskController.js
+│   ├── routes/
+│   │   └── taskRoutes.js
+│   ├── package.json
+│   ├── Dockerfile
+│   └── prisma/
+│       └── schema.prisma
 │
 ├── frontend/
-│ └── src/
-│ ├── App.jsx
-│ ├── components/
-│ │ └── TaskCard.jsx
-│ ├── App.css
-│ └── index.css
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── components/
+│   │   │   └── TaskCard.jsx
+│   │   ├── App.css
+│   │   └── index.css
+│   ├── package.json
+│   └── Dockerfile
 │
-├── prisma/
-│ └── schema.prisma
-│
-├── image/
-│ └── Screenshot.jpg
+├── Images/
+│   └── Screenshot.jpg
 │
 ├── .env
 ├── .gitignore
-├── package.json
-└── README.md
+├── docker-compose.yml
+├── README.md
 ```
 
 ---
@@ -74,11 +77,13 @@ Create a `.env` file in the **root directory** with the following:
 
 ```env
 # PostgreSQL Connection
-DATABASE_URL="postgresql://postgres:yourpassword@localhost:5432/todo_db?schema=public"
+DATABASE_URL="postgresql://postgres:password@localhost:5432/todo_db?schema=public"
 
 # Backend Server Port
 PORT=5000
 ```
+
+---
 
 ## 🧱 Database Design
 
@@ -92,16 +97,54 @@ PORT=5000
 | `isCompleted` | Boolean  | Default: false         | Marks task completion status   |
 | `createdAt`   | DateTime | Default: now()         | Creation timestamp             |
 
+---
+
 ## 🧩 Instructions to Build & Run
 
-### Step 1 - Clone the Repository
+### ▶️ Run with Docker (Recommended)
 
-```bash
-git clone https://github.com/MohammadhRimaz/TO-DO.git
-cd todo-app
-```
+**Prerequisites:**
 
-### Step 2 - Setup Database
+- [Docker](https://www.docker.com/products/docker-desktop/) installed
+
+**Steps:**
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/MohammadhRimaz/TO-DO.git
+   cd TO-DO
+   ```
+
+2. **Create a `.env` file** in the root directory (see sample above).
+
+3. **Build and start all services:**
+
+   ```bash
+   docker-compose up --build
+   ```
+
+   - This will start:
+     - PostgreSQL database
+     - Backend API (Express + Prisma)
+     - Frontend (React)
+
+4. **Access the app:**
+
+   - Frontend: [http://localhost:5173](http://localhost:5173)
+   - Backend API: [http://localhost:5000](http://localhost:5000)
+
+5. **(Optional) Open Prisma Studio:**
+   ```bash
+   docker-compose exec backend npx prisma studio
+   ```
+   - Prisma Studio: [http://localhost:5555](http://localhost:5555)
+
+---
+
+### ▶️ Manual (Local) Setup
+
+#### Step 1 - Setup Database
 
 - Make sure PostgreSQL is installed and running locally.
 
@@ -109,52 +152,54 @@ cd todo-app
 CREATE DATABASE todo_db;
 ```
 
-Update .env with your PostgreSQL credentials.
+Update `.env` with your PostgreSQL credentials.
 
-### Step 3 - Install Dependencies
+#### Step 2 - Install Dependencies
 
-- Root Level
+- Backend
 
-```bash
-npm install
-npx prisma generate
-npx prisma db push
-```
+  ```bash
+  cd backend
+  npm install
+  npx prisma generate
+  npx prisma db push
+  ```
 
 - Frontend
 
-```bash
-cd frontend
-npm install
-```
+  ```bash
+  cd ../frontend
+  npm install
+  ```
 
-### Step 4 - Run the Application
+#### Step 3 - Run the Application
 
-- Run Backend in the root level
+- Backend
 
-```bash
-npm run dev
-```
+  ```bash
+  cd backend
+  npm run dev
+  ```
 
-Backend runs at:
-👉 http://localhost:5000
+  Backend runs at: [http://localhost:5000](http://localhost:5000)
 
-- Run Frontend
+- Frontend
 
-```bash
-cd frontend
-npm run dev
-```
+  ```bash
+  cd ../frontend
+  npm run dev
+  ```
 
-Frontend runs at:
-👉 http://localhost:5173
+  Frontend runs at: [http://localhost:5173](http://localhost:5173)
 
-### Step 5 - See the Database visually
+#### Step 4 - See the Database visually
 
-- Run the command in the root folder
+- Run the command in the backend folder
 
-```bash
-npx prisma studio
-```
+  ```bash
+  npx prisma studio
+  ```
 
-Prisma Studio is run on http://localhost:5555
+  Prisma Studio: [http://localhost:5555](http://localhost:5555)
+
+---
